@@ -1,11 +1,13 @@
 variable "aws_region" {
-  type    = string
+  type    = "string"
   default = "us-east-1"
 }
 
 variable "aws_account_ids" {
-  type    = list
-  default = null
+  type    = "list"
+  default = [
+    "666014357539"
+  ]
 }
 
 terraform {
@@ -13,8 +15,8 @@ terraform {
 }
 
 provider "aws" {
-  region              = var.aws_region
-  allowed_account_ids = var.aws_account_ids
+  region              = "${var.aws_region}"
+  allowed_account_ids = "${var.aws_account_ids}"
   profile             = "default"
-  version             = ">= 2.46.0"
+  # version             = ">= 2.46.0"
 }
